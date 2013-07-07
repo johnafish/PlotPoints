@@ -1,0 +1,58 @@
+#grid {
+    position: absolute;
+    background: #ededed;
+    width: 500px;
+    height: 300px;
+    top: 250px;
+    left: 50px;
+}
+#label {
+    line-height: 20px;
+    width: 24px;
+}
+input {
+    width: 500px;
+}
+span {
+    width: 100px;
+    display: block;
+    float: left;
+}
+#point {
+    display: block;
+    background: #06a;
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    position: absolute;
+    z-index: 10;
+}
+#line {
+    position: absolute;
+    width: 1px;
+    background-color: #06a;
+    z-index: 100;
+    -webkit-transform-origin: bottom left;
+    -moz-transform-origin: bottom left;
+    -o-transform-origin: bottom left;
+    -ms-transform-origin: bottom left;
+    transform-origin: bottom left;
+}
+#ymark {
+    width: 500px;
+    height: 1px;
+    position: absolute;
+    background: black;
+    left: 0px;
+    z-index: 9;
+    opacity: 0.3;
+}
+#xmark {
+    width: 1px;
+    height: 300px;
+    position: absolute;
+    background: black;
+    bottom: 0px;
+    z-index: 9;
+    opacity: 0.3;
+}
