@@ -31,10 +31,12 @@ function plotPoint(x, y) { //Plotting a point
 			.css('top', y); //Top margin
 }
 
-function plotGuides() {
-	for (var i = 0;i<11;i++){
-        var left = i*(xAxis/10);
-        var xsize = i*($('#grid').width() / 10); //Gives the margin left essentially
+function plotGuides(numberOfRows) {
+    numberOfRows = (typeof numberOfRows == "undefined") ? 10 : numberOfRows;
+
+	for (var i = 0;i<(numberOfRows+1);i++){
+        var left = i*(xAxis/numberOfRows);
+        var xsize = i*($('#grid').width() / numberOfRows); //Gives the margin left essentially
         var xLabel = $(document.createElement('span')).appendTo('#grid').attr('id', 'label').text(left.toFixed(1));
         var xMark = $(document.createElement('div')).appendTo('#grid').attr('id', 'xmark');
         xMark
@@ -45,9 +47,9 @@ function plotGuides() {
             .css('text-align', 'center')
             .css('left', -12+xsize+'px');
     }
-    for (var i=0;i<11;i++){
-        var top = i*(yAxis/10);
-        var ysize = i*($('#grid').height() / 10);
+    for (var i=0;i<(numberOfRows+1);i++){
+        var top = i*(yAxis/numberOfRows);
+        var ysize = i*($('#grid').height() / numberOfRows);
         var yLabel = $(document.createElement('span')).appendTo('#grid').attr('id', 'label').text(top.toFixed(1));
         var yMark = $(document.createElement('div')).appendTo('#grid').attr('id', 'ymark');
         yMark
