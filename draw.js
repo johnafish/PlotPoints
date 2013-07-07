@@ -97,7 +97,7 @@ $('#plot').click(function () { //Happening everything you hit "Plot"
                 .css('transform', 'rotate(' + angle + 'deg)');
         }
 
-        $("#x, #y").val("");
+        $("#x, #y").val(""); // Clear input field values.
     } else {
         alert("Please enter a set of valid values!");
     }
