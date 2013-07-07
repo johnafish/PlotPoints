@@ -1,6 +1,7 @@
 var x, y, x1, x2, y1, y2, dx, dx, xs, ys, xAxis, yAxis, left, top, xmultiply, ymultiply; //Define all the stupid variables - perhaps narrow these down.
 maxX=500;
 maxY=300;
+var grid = $('#grid');
 $("#maxX").on("keyup change", function(){ //Max x axis manual input
     maxX = this.value;
 });
@@ -25,18 +26,20 @@ function clearPoints() { //How to clear just the data
 }
 
 function plotPoint(x, y) { //Plotting a point
-	var point = $(document.createElement('div')).appendTo('#grid').attr('id', 'point'); //Create div #point appended to #grid
+	var point = $(document.createElement('div')).appendTo(grid).attr('id', 'point'); //Create div #point appended to #grid
         point
 			.css('left', x) //Left margin
 			.css('top', y); //Top margin
 }
 
-function plotGuides() {
-	for (var i = 0;i<11;i++){
-        var left = i*(xAxis/10);
-        var xsize = i*50; //Gives the margin left essentially
-        var xLabel = $(document.createElement('span')).appendTo('#grid').attr('id', 'label').text(left.toFixed(1));
-        var xMark = $(document.createElement('div')).appendTo('#grid').attr('id', 'xmark');
+function plotGuides(numberOfRows) {
+    numberOfRows = (typeof numberOfRows == "undefined") ? 10 : numberOfRows;
+
+	for (var i = 0;i<(numberOfRows+1);i++){
+        var left = i*(xAxis/numberOfRows);
+        var xsize = i*(grid.width() / numberOfRows); //Gives the margin left essentially
+        var xLabel = $(document.createElement('span')).appendTo(grid).attr('id', 'label').text(left.toFixed(1));
+        var xMark = $(document.createElement('div')).appendTo(grid).attr('id', 'xmark');
         xMark
             .css('left', xsize+'px');
         xLabel
@@ -45,11 +48,11 @@ function plotGuides() {
             .css('text-align', 'center')
             .css('left', -12+xsize+'px');
     }
-    for (var i=0;i<11;i++){
-        var top = i*(yAxis/10);
-        var ysize = i*30;
-        var yLabel = $(document.createElement('span')).appendTo('#grid').attr('id', 'label').text(top.toFixed(1));
-        var yMark = $(document.createElement('div')).appendTo('#grid').attr('id', 'ymark');
+    for (var i=0;i<(numberOfRows+1);i++){
+        var top = i*(yAxis/numberOfRows);
+        var ysize = i*(grid.height() / numberOfRows);
+        var yLabel = $(document.createElement('span')).appendTo(grid).attr('id', 'label').text(top.toFixed(1));
+        var yMark = $(document.createElement('div')).appendTo(grid).attr('id', 'ymark');
         yMark
             .css('top', 300-ysize+'px');
         yLabel
@@ -61,7 +64,7 @@ function plotGuides() {
 }
 
 function plotLine() {
-	var line = $(document.createElement('div')).attr('id', 'line').appendTo('#grid'); //Create the line
+	var line = $(document.createElement('div')).attr('id', 'line').appendTo(grid); //Create the line
 	var length = Math.sqrt(dx * dx + dy * dy); //Pythagorean theorum (a^2+b^2=c^2) so we know our hypotenuse length
 	var angle = 180 / 3.1415 * Math.acos((y2 - y1) / length); //Figure out our angle by taking the inverse cos function (arccos). This is because arccos returns an angle based on the cos of an angle, where the inputs are the adjacent and the hypotenuse (dy and length).
 	var yo = 300 - length; //This is our margin top
