@@ -96,6 +96,8 @@ $('#plot').click(function () { //Happening everything you hit "Plot"
                 .css('-ms-transform', 'rotate(' + angle + 'deg)')
                 .css('transform', 'rotate(' + angle + 'deg)');
         }
+
+        $("#x, #y").val("");
     } else {
         alert("Please enter a set of valid values!");
     }
