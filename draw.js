@@ -34,7 +34,7 @@ function plotPoint(x, y) { //Plotting a point
 function plotGuides() {
 	for (var i = 0;i<11;i++){
         var left = i*(xAxis/10);
-        var xsize = i*50; //Gives the margin left essentially
+        var xsize = i*($('#grid').width() / 10); //Gives the margin left essentially
         var xLabel = $(document.createElement('span')).appendTo('#grid').attr('id', 'label').text(left.toFixed(1));
         var xMark = $(document.createElement('div')).appendTo('#grid').attr('id', 'xmark');
         xMark
@@ -47,7 +47,7 @@ function plotGuides() {
     }
     for (var i=0;i<11;i++){
         var top = i*(yAxis/10);
-        var ysize = i*30;
+        var ysize = i*($('#grid').height() / 10);
         var yLabel = $(document.createElement('span')).appendTo('#grid').attr('id', 'label').text(top.toFixed(1));
         var yMark = $(document.createElement('div')).appendTo('#grid').attr('id', 'ymark');
         yMark
