@@ -135,4 +135,6 @@ $('#set').click(function(){
             .css('top', 290-ysize+'px')
             .css('text-align', 'right');
     }
+
+    $("#maxX, #maxY").val(""); // Clear input field values.
 });
