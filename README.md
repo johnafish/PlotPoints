@@ -1,5 +1,4 @@
 #PlotPoints
-==========
 
 PlotPoints is a web-based jQuery application set out to plot any point you can dream of!
 
