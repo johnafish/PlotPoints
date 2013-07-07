@@ -96,6 +96,8 @@ $('#plot').click(function () { //Happening everything you hit "Plot"
                 .css('-ms-transform', 'rotate(' + angle + 'deg)')
                 .css('transform', 'rotate(' + angle + 'deg)');
         }
+
+        $("#x, #y").val(""); // Clear input field values.
     } else {
         alert("Please enter a set of valid values!");
     }
@@ -133,4 +135,6 @@ $('#set').click(function(){
             .css('top', 290-ysize+'px')
             .css('text-align', 'right');
     }
+
+    $("#maxX, #maxY").val(""); // Clear input field values.
 });
