@@ -55,21 +55,21 @@ function plotGuides() {
 }
 function plotLine() {
 	var line = $(document.createElement('div')).attr('id', 'line').appendTo('#grid'); //Create the line
-	var length = Math.sqrt(dx * dx + dy * dy); //Pythagorean theorum (a^2+b^2=c^2) so we know our hypotenuse length
-	var angle = 180 / 3.1415 * Math.acos((y2 - y1) / length); //Figure out our angle by taking the inverse cos function (arccos). This is because arccos returns an angle based on the cos of an angle, where the inputs are the adjacent and the hypotenuse (dy and length).
-	var yo = 300 - length; //This is our margin top
-	if (x2 - x1 < 0) {
-		angle *= -1; //Invert the angle to allow for negative trends
-	}
-	line
-		.css('top', (yo - y1) + 'px') //Setting the top to be in the middle of the point in terms of y axis
-		.css('left', x1 + 'px') //Setting the left margin to be the middle of the point in terms of x 
-		.css('height', length)
-		.css('-webkit-transform', 'rotate(' + angle + 'deg)')
-		.css('-moz-transform', 'rotate(' + angle + 'deg)')
-		.css('-o-transform', 'rotate(' + angle + 'deg)')
-		.css('-ms-transform', 'rotate(' + angle + 'deg)')
-		.css('transform', 'rotate(' + angle + 'deg)');
+			var length = Math.sqrt(dx * dx + dy * dy); //Pythagorean theorum (a^2+b^2=c^2) so we know our hypotenuse length
+			var angle = 180 / 3.1415 * Math.acos((y2 - y1) / length); //Figure out our angle by taking the inverse cos function (arccos). This is because arccos returns an angle based on the cos of an angle, where the inputs are the adjacent and the hypotenuse (dy and length).
+			var yo = 300 - length; //This is our margin top
+			if (x2 - x1 < 0) {
+				angle *= -1; //Invert the angle to allow for negative trends
+			}
+			line
+				.css('top', (yo - y1) + 'px') //Setting the top to be in the middle of the point in terms of y axis
+				.css('left', x1 + 'px') //Setting the left margin to be the middle of the point in terms of x 
+				.css('height', length)
+				.css('-webkit-transform', 'rotate(' + angle + 'deg)')
+				.css('-moz-transform', 'rotate(' + angle + 'deg)')
+				.css('-o-transform', 'rotate(' + angle + 'deg)')
+				.css('-ms-transform', 'rotate(' + angle + 'deg)')
+				.css('transform', 'rotate(' + angle + 'deg)');
 }
 $(document).ready(function(){
     plotGuides();
@@ -105,7 +105,7 @@ $('#plot').click(function () { //Happening everything you hit "Plot"
        if (pointAmount > 1) { //If there is more than one point, draw a line
             dx = x2 - x1; //Used to make less calculations later on
             dy = y2 - y1; // ""
-            plotLine();
+            
         }
 
         $("#x, #y").val(""); // Clear input field values.
